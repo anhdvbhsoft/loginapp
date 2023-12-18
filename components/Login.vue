@@ -83,7 +83,7 @@
       </a-col>
     </a-row>
     <!-- Register  -->
-    <a-row type="flex" justify="center" v-else-if="!isLoginMode">
+    <a-row type="flex" justify="center" v-else>
       <a-col
         :xs="{ span: 22 }"
         :sm="{ span: 20 }"
@@ -184,7 +184,6 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      // To disabled submit button at the beginning.
       this.form.validateFields();
     });
     this.getData();
@@ -207,19 +206,19 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          const user = this.listUser.find(
+          const checkUser = this.listUser.find(
             (el) =>
               el.userName == values.userName && el.password == values.password
           );
-          if (user) {
+          if (checkUser) {
             this.$notification.open({
               message: "Đăng nhập thành công !",
-              icon: <a-icon type="smile" style="color: #0bcd1b" />,
+              icon: <a-icon type="check-circle" style="color: #0bcd1b" />,
             });
           } else {
             this.$notification.open({
               message: "Tài khoản hoặc mật khẩu không đúng , vui lòng thử lại.",
-              icon: <a-icon type="smile" style="color: #d51200" />,
+              icon: <a-icon type="close-circle" style="color: #d51200" />,
             });
           }
         }
@@ -227,16 +226,14 @@ export default {
     },
     async getData() {
       try {
-        // Gửi yêu cầu GET để lấy dữ liệu từ tệp JSON
         const response = await axios.get("/data.json");
 
-        // Lưu trữ dữ liệu vào biến jsonData trong data()
         this.listUser = response.data.lists;
         this.jsonData = response.data;
 
         window.localStorage.setItem("lists", JSON.stringify(response.data));
       } catch (error) {
-        console.error("Đã xảy ra lỗi khi lấy dữ liệu:", error);
+        console.error(error);
       }
     },
     // Registers
@@ -255,12 +252,12 @@ export default {
           this.addNewUser(newUser);
           this.$notification.open({
             message: "Đăng ký thành công !",
-            icon: <a-icon type="smile" style="color: #0bcd1b" />,
+            icon: <a-icon type="check-circle" style="color: #0bcd1b" />,
           });
         } else {
           this.$notification.open({
             message: "Tài khoản đã tồn tại !",
-            icon: <a-icon type="smile" style="color: #d51200" />,
+            icon: <a-icon type="close-circle" style="color: #d51200" />,
           });
         }
       });
@@ -290,7 +287,7 @@ export default {
         this.jsonData.lists = this.listUser;
         window.localStorage.setItem("lists", JSON.stringify(this.jsonData));
       } catch (error) {
-        console.error("Không push được", error);
+        console.error(error);
       }
     },
     changeMode() {

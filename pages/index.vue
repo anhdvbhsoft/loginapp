@@ -12,12 +12,7 @@ export default Vue.extend({
 </script>
 
 <style lang="css">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 body {
-	background-image: url('https://mega.com.vn/media/news/0306_Hinh-nen-den-4k78.jpg')
+  background-image: url("https://mega.com.vn/media/news/0306_Hinh-nen-den-4k78.jpg");
 }
 </style>
