@@ -216,7 +216,6 @@ export default {
               message: "Đăng nhập thành công !",
               icon: <a-icon type="smile" style="color: #0bcd1b" />,
             });
-            // this.$router.push({path:"/mainpage"})
           } else {
             this.$notification.open({
               message: "Tài khoản hoặc mật khẩu không đúng , vui lòng thử lại.",
