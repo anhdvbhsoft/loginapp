@@ -301,7 +301,7 @@ export default {
   width: 100%;
 }
 .login-form-forgot {
-  float: right;
+  float: right;  
 }
 .main-container {
   padding: 40px;
