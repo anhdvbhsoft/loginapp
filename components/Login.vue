@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div>
     <!-- Login -->
     <a-row type="flex" justify="center" v-if="isLoginMode">
       <a-col
