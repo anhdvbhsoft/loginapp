@@ -74,7 +74,7 @@
               </a-button>
             </a-form-item>
             <a-form-item>
-              <a href="#" v-on:click="changeMode()">Register now</a>
+              <a href="#" @click="changeMode()">Register now</a>
             </a-form-item>
           </a-form>
         </div>
@@ -150,7 +150,7 @@
             </a-button>
           </a-form-item>
           <a-form-item>
-            <a href="#" v-on:click="changeMode()">Back to Login</a>
+            <a href="#" @click="changeMode()">Back to Login</a>
           </a-form-item>
         </a-form>
       </a-col>
