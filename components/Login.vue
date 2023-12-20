@@ -5,7 +5,6 @@
       <a-col
         :xs="{ span: 22 }"
         :sm="{ span: 20 }"
-        :md="{ span: 10 }"
         :lg="{ span: 8 }"
         class="main-container"
       >
@@ -76,7 +75,6 @@
             </a-form-item>
             <a-form-item>
               <a href="#" v-on:click="changeMode()">Register now</a>
-              <!-- <Nuxt-link to="/register">Register now</Nuxt-link> -->
             </a-form-item>
           </a-form>
         </div>
@@ -192,12 +190,10 @@ export default {
     this.formRegister = this.$form.createForm(this, { name: "register" });
   },
   methods: {
-    // Only show error after a field is touched.
     userNameError() {
       const { getFieldError, isFieldTouched } = this.form;
       return isFieldTouched("userName") && getFieldError("userName");
     },
-    // Only show error after a field is touched.
     passwordError() {
       const { getFieldError, isFieldTouched } = this.form;
       return isFieldTouched("password") && getFieldError("password");
@@ -212,12 +208,12 @@ export default {
           );
           if (checkUser) {
             this.$notification.open({
-              message: "Đăng nhập thành công !",
+              message: "Login successful !",
               icon: <a-icon type="check-circle" style="color: #0bcd1b" />,
             });
           } else {
             this.$notification.open({
-              message: "Tài khoản hoặc mật khẩu không đúng , vui lòng thử lại.",
+              message: "Incorrect username or password. Please try again.",
               icon: <a-icon type="close-circle" style="color: #d51200" />,
             });
           }
@@ -251,12 +247,12 @@ export default {
         if (!err && values.password == values.confirm && !checkUserName) {
           this.addNewUser(newUser);
           this.$notification.open({
-            message: "Đăng ký thành công !",
+            message: "Your registration is complete!",
             icon: <a-icon type="check-circle" style="color: #0bcd1b" />,
           });
         } else {
           this.$notification.open({
-            message: "Tài khoản đã tồn tại !",
+            message: "Account already exists!",
             icon: <a-icon type="close-circle" style="color: #d51200" />,
           });
         }
@@ -298,10 +294,9 @@ export default {
 </script>
 
 <style lang="css">
-.login-forms {
-  padding-top: 25px;
+.login-forms h1 {
+  margin-bottom: 25px;
 }
-
 .forgotpass {
   width: 100%;
 }
@@ -309,14 +304,11 @@ export default {
   float: right;
 }
 .main-container {
-  padding: 35px;
+  padding: 40px;
   border: 1px solid black;
   border-radius: 10px;
   height: 75vh;
   margin-top: 10vh;
   background: white;
-}
-.alert-message {
-  color: #d51200;
 }
 </style>
